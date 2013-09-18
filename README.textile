@@ -1,0 +1,34 @@
+h1. Ember Component Library Template
+
+This template provides you with the basic project structure, build configuration and instructions to build your own custom component libraries for Ember.
+
+"Ember 1.0":http://emberjs.com finalized a new construct based on the upcoming Web Components standard called simply 'Components'.  Unlike traditional Ember Route-Controller-View interactions, an Ember Component is standalone and completely decoupled from the rest of the application.  This decoupling is a critical attribute for building reusable components and large-scale, maintainable applications.  It is a design pattern familiar to many who have built user interfaces in other languages and frameworks.
+
+With "Ember Components":http://emberjs.com/guides/components/ now available, we wanted to create a simple template for creating component libraries.  Component libraries can be built to wrap non-ember Javascript components, extend the functionality of Ember Views, and provide collections of controls which have some common/shared interaction.  
+
+However, if you want to reuse your components between projects, you'll need to extract your components into a distinct project, and have enough build infrastructure in place so that your library can be built, exported and made accessible by dependent applications.  We scoured for an existing minimal template to provide this structure, but could not find it, so we built a barebones version ourselves.
+
+_Thanks to the "Bootstrap for Ember":https://github.com/ember-addons/bootstrap-for-ember team for providing us with a great starting point._
+
+
+h2. Project Structure
+* /app
+** /scripts
+*** /components - the Ember.Component derived classes here
+** /templates
+**** /components - handlebars or other templates providing the UI for your components (if needed)
+* /build - where the final minified version of JS library will end up
+* /test - create test containers/apps/pages for your ember components here
+
+
+
+h2. Getting Started
+
+# Clone this repo - @git clone git@&#64;@github.com:moonlight-labs/ember-component-library-template.git my-component-lib@
+# Install NPM - part of the "NodeJS package":http://nodejs.org/download/
+# Install grunt & dependencies - @npm install@
+# Build the project - @grunt@
+# Configure a Namespace for your components<br />Find & replace all instances of 'EmberComponentLibraryTemplate' to 'MyComponents' or something similar that you want to use as the prefix for your components.
+# Add Your Own Components<br />Follow the locations, filenaming and structural conventions of the HelloWorldComponent
+# Rebuild the project using your new namespace and components - @grunt@
+# Test your components using the simple Ember Test app in /test/index.html
