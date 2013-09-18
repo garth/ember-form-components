@@ -32,3 +32,7 @@ h2. Getting Started
 # Add Your Own Components<br />Follow the locations, filenaming and structural conventions of the HelloWorldComponent
 # Rebuild the project using your new namespace and components - @grunt@
 # Test your components using the simple Ember Test app in /test/index.html
+
+h2. Credits
+
+* "Moonlight Labs":http://moonlight-labs.com
