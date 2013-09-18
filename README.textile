@@ -24,14 +24,21 @@ h2. Project Structure
 
 h2. Getting Started
 
-# Clone this repo - @git clone git@&#64;@github.com:moonlight-labs/ember-component-library-template.git my-component-lib@
-# Install NPM - part of the "NodeJS package":http://nodejs.org/download/
-# Install grunt & dependencies - @npm install@
-# Build the project - @grunt@
+Clone this repo into your new project folder, then follow these steps:
+
+bc. git clone git@github.com:moonlight-labs/ember-component-library-template.git my-component-lib
+
+# Install NPM, included in the "NodeJS package":http://nodejs.org/download/
+# cd into your new project directory<br />@cd my-component-lib@
+# Install grunt & dependencies<br/>@npm install@
+# Build the project<br/>@grunt@
 # Configure a Namespace for your components<br />Find & replace all instances of 'EmberComponentLibraryTemplate' to 'MyComponents' or something similar that you want to use as the prefix for your components.
-# Add Your Own Components<br />Follow the locations, filenaming and structural conventions of the HelloWorldComponent
-# Rebuild the project using your new namespace and components - @grunt@
+# Add Your Own Components<br />Follow the locations, file naming and structural conventions of the HelloWorldComponent
+# Rebuild the project using your new namespace and components<br/>@grunt@
 # Test your components using the simple Ember Test app in /test/index.html
+
+h2. Ember Component Libraries Using this Template
+# _"Email us":mailto:dlrush@gmail.com to get your project listed here_
 
 h2. Credits
 
