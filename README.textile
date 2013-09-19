@@ -1,9 +1,0 @@
-h1. Ember Form Components Library
-
-The libray contains a number of "EmberJS":http://emberjs.com components that you can use in your ember application to simplify form creation and validation.
-
-This library is built using the "Ember Component Library Template":https://github.com/moonlight-labs/ember-component-library-template from "Moonlight Labs":http://moonlight-labs.com/.
-
-For usage example see test/index.html
-
-A full writeup is coming soon...

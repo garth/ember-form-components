@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Page for Ember Form Components Library - Without Bootstrap</title>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.0/ember.js"></script>
+  <script type="text/javascript" src="../build/ember-form-components.min.js"></script>
+  <script type="text/javascript">
+    delete Ember.TEMPLATES['input_password_strength'];
+    delete Ember.TEMPLATES['input_text'];
+    App = Ember.Application.createWithMixins(EmberFormComponents.Register);
+    App.IndexController = Ember.Controller.extend(EmberFormComponents.Form, {
+      name: '',
+      email: '',
+      password: '',
+      validateEmail: function (email, callback) {
+        // Insert AJAX call here:
+        setTimeout(function () {
+          callback(true, 'Email address available');
+        }, 1000);
+      },
+      actions: {
+        signup: function() {
+          if (this.get('isFormValid')) {
+            alert(JSON.stringify(this.getProperties('name', 'email', 'password')));
+          }
+          else {
+            this.set('showFieldValidation', true);
+          }
+        }
+      }
+    });
+  </script>
+</head>
+<body>
+  <script type="text/x-handlebars" data-template-name="input_password_strength">
+    Strength: {{score}}%
+  </script>
+  <script type="text/x-handlebars" data-template-name="input_text">
+    <label {{bind-attr for="inputField.elementId"}}>{{label}}</label>
+    {{input
+      typeBinding="type"
+      placeholderBinding="placeholder"
+      valueBinding="value"}}
+    <p>{{message}}</p>
+  </script>
+  <script type="text/x-handlebars">
+    <h2>Ember Form Components Library - Without Bootstrap</h2>
+    {{outlet}}
+  </script>
+  <script type="text/x-handlebars" data-template-name="index">
+    <form role="form" {{action "signup" on="submit"}}>
+      <h3>Test Form</h3>
+      {{input-text
+        label="Name"
+        placeholder="name"
+        value=name
+        formController=controller
+        required=true
+        autofocus=true}}
+      {{input-email
+        value=email
+        formController=controller
+        required=true
+        customValidator=validateEmail}}
+      {{input-password value=password
+        formController=controller
+        required=true}}
+      <p><button type="submit" {{bind-attr class="formController.isFormValid:active:inactive"}}>save</button></p>
+    </form>
+  </script>
+</body>
+</html>
