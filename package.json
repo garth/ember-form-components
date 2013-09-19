@@ -1,5 +1,5 @@
 {
-  "name": "ember-component-library-template",
+  "name": "ember-form-components",
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "~0.4.1",

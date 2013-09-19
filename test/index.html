@@ -1,18 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Test Page for Ember Component Library Template</title>
+  <title>Test Page for Ember Form Components Library</title>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.0/ember.js"></script>
-  <script type="text/javascript" src="../build/ember-component-library-template.min.js"></script>
+  <script type="text/javascript" src="../build/ember-form-components.min.js"></script>
   <script type="text/javascript">
-    App = Ember.Application.createWithMixins(EmberComponentLibraryTemplate.Register);
+    App = Ember.Application.createWithMixins(EmberFormComponents.Register);
+    App.IndexController = Ember.Controller.extend(EmberFormComponents.Form, {
+      name: '',
+      email: '',
+      password: '',
+      validateEmail: function (email, callback) {
+        // Insert AJAX call here:
+        setTimeout(function () {
+          callback(true, 'Email address available');
+        }, 1000);
+      },
+      actions: {
+        signup: function() {
+          if (this.get('isFormValid')) {
+            alert(JSON.stringify(this.getProperties('name', 'email', 'password')));
+          }
+          else {
+            this.set('showFieldValidation', true);
+          }
+        }
+      }
+    });
   </script>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <style>
+    .password-meter {
+      margin-top: -6px;
+      height: 6px;
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
 <body>
   <script type="text/x-handlebars">
-    {{hello-world}}
+    <div class="container">
+      <h2>Ember Form Components Library</h2>
+      {{outlet}}
+    </div>
+  </script>
+  <script type="text/x-handlebars" data-template-name="index">
+    <form role="form" {{action "signup" on="submit"}}>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Test Form</div>
+        <div class="panel-body">
+          {{input-text
+            label="Name"
+            placeholder="name"
+            value=name
+            formController=controller
+            required=true
+            autofocus=true}}
+          {{input-email
+            value=email
+            formController=controller
+            required=true
+            customValidator=validateEmail}}
+          {{input-password value=password
+            formController=controller
+            required=true}}
+        </div>
+        <div class="panel-footer">
+          {{#submit-button formController=controller}}Save{{/submit-button}}
+        </div>
+      </div>
+    </form>
   </script>
 </body>
 </html>

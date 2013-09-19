@@ -1,2 +1,1 @@
-EmberComponentLibraryTemplate = Ember.Namespace.create();
-EmberComponentLibraryTemplate.Register = Ember.Mixin.create();
+EmberFormComponents = Ember.Namespace.create();
