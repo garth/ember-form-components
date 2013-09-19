@@ -168,6 +168,11 @@ Sample handlebars template
 </form>
 ```
 
+Working Demo
+------------
+
+http://jsbin.com/aRaPeTA/1
+
 Credits
 -------
 
