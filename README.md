@@ -26,8 +26,8 @@ This library currently contains the following components:
 
 * `{{input-text}}` - Supports required, regex validator, shouldEqual & custom validator (with async support)
 * `{{input-email}}` - Supports required & custom validator (with async support)
-* `{{input-password}}` - Supports required and includes confirm password + stregth meter
-* `{{#submit-button}}submit{{/submit-button}}` - When form is not valid, the submit button will activate all validation check, when form is valid it will change class to indicate active.
+* `{{input-password}}` - Supports required and includes confirm password + strength meter
+* `{{#submit-button}}submit{{/submit-button}}` - When form is valid, the submit button class will be set to `btn-primary`.
 
 Each input control consists of a label, input and validation message, as well as classes for current validity status.
 
@@ -42,7 +42,7 @@ See the app/templates folder for samples.
 You'll need to remove the default templates with the following code to stop ember from complaining:
 
 ```javascript
-// best to place these lines just before you app
+// best to place these lines just before your app
 // declaration if you want to supply your own templates
 delete Ember.TEMPLATES['input_password_strength'];
 delete Ember.TEMPLATES['input_text'];
@@ -70,7 +70,7 @@ properties:
 * `isValid` (readonly) - current validation status
 * `formController` (should be set to `controller`) - This allows each component to register with the controller so that the controller can track the current status of each validation component
 
-The `customValidator` takes 2 arguments, the field value and a callback function. The callback expects 2 arguments success (booL) and status message. If the callback is not executed immediately then the component will show the `validatingMessage` until callback is invoked.
+The `customValidator` takes 2 arguments, the field value and a callback function. The callback expects 2 arguments success (bool) and status message. If the callback is not executed immediately then the component will show the `validatingMessage` until callback is invoked.
 
 ```javascript
 var validateEmail = function (email, callback) {
@@ -88,8 +88,8 @@ Inherits from `{{input-text}}`
 
 properties:
 
-* `placeholder` (default `"email address"`)
 * `label` (default `"Email Address"`)
+* `placeholder` (default `"email address"`)
 * `validatingMessage` (default `"checking email..."`)
 
 {{input-password}}
@@ -115,8 +115,11 @@ When the `EmberFormComponents.Form` mixin is applied to the controller the follo
 Example
 -------
 
+Application definition and sample controller
+
 ```javascript
-App = Ember.Application.createWithMixins(EmberFormComponents.Register);
+App = Ember.Application.createWithMixins(EmberFormComponents.Register, {
+});
 
 App.IndexController = Ember.Controller.extend(EmberFormComponents.Form, {
   name: '',
@@ -142,6 +145,8 @@ App.IndexController = Ember.Controller.extend(EmberFormComponents.Form, {
 });
 ```
 
+Sample handlebars template
+
 ```handlebars
 <form role="form" {{action "signup" on="submit"}}>
   {{input-text
@@ -164,6 +169,6 @@ App.IndexController = Ember.Controller.extend(EmberFormComponents.Form, {
 ```
 
 Credits
-=======
+-------
 
 This library is built using the [Ember Component Library Template](https://github.com/moonlight-labs/ember-component-library-template) from [Moonlight Labs](http://moonlight-labs.com/).
