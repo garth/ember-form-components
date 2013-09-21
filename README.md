@@ -50,8 +50,7 @@ delete Ember.TEMPLATES['input_text'];
 
 For a working samples see `test/index.html` (with bootstrap) or `test/nobootrap.html` (without).
 
-{{input-text}}
---------------
+### {{input-text}}
 
 properties:
 
@@ -81,8 +80,7 @@ var validateEmail = function (email, callback) {
 };
 ```
 
-{{input-email}}
----------------
+### {{input-email}}
 
 Inherits from `{{input-text}}`
 
@@ -92,8 +90,7 @@ properties:
 * `placeholder` (default `"email address"`)
 * `validatingMessage` (default `"checking email..."`)
 
-{{input-password}}
-------------------
+### {{input-password}}
 
 * `label` (default: `"Password"`)
 * `value` (default: `""`)
@@ -104,8 +101,7 @@ properties:
 * `generatePasswordScore` (`function (password)`) - override the default function to use your own algorithm, must return number between 0 and 100)
 * `isValid` (readonly)
 
-The Form Controller
--------------------
+### The Form Controller
 
 When the `EmberFormComponents.Form` mixin is applied to the controller the following fields are added:
 
@@ -172,6 +168,20 @@ Working Demo
 ------------
 
 http://jsbin.com/aRaPeTA/1
+
+Contributing
+------------
+
+1. Fork the repository to your GitHub account
+2. Clone the repistory to your computer
+3. Install nodejs
+4. Install grunt `npm install -g grunt-cli`
+5. From the root exec `npm install`
+6. Make your changes
+7. Build the library `grunt`
+8. Test your changes
+9. Commit and push your changes to GitHub
+10. Send a pull request
 
 Credits
 -------
