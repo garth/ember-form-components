@@ -22,6 +22,8 @@ App.MyFormController = Ember.Controller.extend(EmberFormComponents.Form, {
 });
 ```
 
+As well as `EmberFormComponents` the library also defines `EmberFC` as a shortcut to EmberFormComponents.
+
 This library currently contains the following components:
 
 * `{{input-text}}` - Supports required, regex validator, shouldEqual & custom validator (with async support)

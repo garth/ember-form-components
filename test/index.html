@@ -7,8 +7,8 @@
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.0/ember.js"></script>
   <script type="text/javascript" src="../build/ember-form-components.min.js"></script>
   <script type="text/javascript">
-    App = Ember.Application.createWithMixins(EmberFormComponents.Register);
-    App.IndexController = Ember.Controller.extend(EmberFormComponents.Form, {
+    App = Ember.Application.createWithMixins(EmberFC.Register);
+    App.IndexController = Ember.Controller.extend(EmberFC.Form, {
       name: '',
       email: '',
       password: '',

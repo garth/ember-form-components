@@ -23,15 +23,11 @@ module.exports = function(grunt) {
         }
       }
     },
-    uglify: {
+    concat: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd h:M:s") %> https://github.com/garth/ember-form-components */\n'//,
-        // mangle: false,
-        // beautify: true,
-        // compress: false,
-        // preserveComments: true
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %> https://github.com/garth/ember-form-components */\n'
       },
-      build: {
+      dist: {
         src:  [
           'app/init.js',
           'app/scripts/components/mixins.js',
@@ -41,7 +37,16 @@ module.exports = function(grunt) {
           'app/scripts/controllers/form-controller-mixin.js',
           'app/register.js',
           '.tmp/*.js'
-        ], //<%= pkg.name %>
+        ],
+        dest: 'build/<%= pkg.name %>.js'
+      }
+    },
+    uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %> https://github.com/garth/ember-form-components */\n'
+      },
+      build: {
+        src: 'build/<%= pkg.name %>.js',
         dest: 'build/<%= pkg.name %>.min.js'
       }
     },
@@ -52,7 +57,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-ember-handlebars');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Default task(s). (The one that is ran when 'grunt' command is called from the directory)
-  grunt.registerTask('default', ['ember_handlebars', 'uglify', 'clean']);
+  grunt.registerTask('default', ['ember_handlebars', 'concat', 'uglify', 'clean']);
 };

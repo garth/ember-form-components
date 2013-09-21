@@ -1,1 +1,1 @@
-EmberFormComponents = Ember.Namespace.create();
+EmberFormComponents = EmberFC = Ember.Namespace.create();
