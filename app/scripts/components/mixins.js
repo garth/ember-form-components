@@ -34,7 +34,7 @@ EmberFormComponents.AsyncValidation = Ember.Mixin.create({
     if (this.get('validating')) {
       return this.get('validatingMessage');
     }
-    else if ((!this.get('focused') || this.get('isValid')) &&
+    else if ((!this.get('focused') || this.get('showErrorOnFocus') || this.get('forceShowError') || this.get('isValid')) &&
       (this.get('showFieldValidation') || this.get('formController.showFieldValidation'))) {
       return this.get('statusMessage');
     }
@@ -43,6 +43,8 @@ EmberFormComponents.AsyncValidation = Ember.Mixin.create({
     }
   }.property('isValid', 'showFieldValidation', 'formController.showFieldValidation', 'focused', 'validating'),
   showFieldValidation: false,
+  showErrorOnFocus: false,
+  forceShowError: false,
   formController: null,
   isValid: false,
   validating: false,
@@ -73,12 +75,13 @@ EmberFormComponents.AsyncValidation = Ember.Mixin.create({
     // Call the specific validation function, passing the
     // value to validate and a callback to which the function
     // must pass the result of the validation.
-    this.validate(value, function (isValid, message) {
+    this.validate(value, function (isValid, message, forceShowError) {
       // Make sure that the value hasn't changed since async validation
       if (value === self.get('value')) {
         self.set('statusMessage', message);
         self.set('isValid', isValid);
         self.set('validating', false);
+        self.set('forceShowError', !!forceShowError);
       }
     });
   }.observes('value'),

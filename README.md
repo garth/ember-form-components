@@ -62,16 +62,18 @@ properties:
 * `type` (default: `"text"`)
 * `placeholder` (default: `""`) - placeholder text for the <input>
 * `required` (default: `false`) - when true the user must enter something into the <input>
+* `showErrorOnFocus` (defualt: `false`) - when true shows errors even whilst editing
 * `shouldEqual` - when set `value` must equal the given value (or property)
 * `shouldEqualMessage` - message to show when `shouldEqual` does not match `value`
 * `regex` - regex string to validate the `value`
 * `regexMessage` - message to show when the `regex` does not match `value`
 * `customValidator` (`function (value, callback)`) - supply a method to do custom validation
+* `customValidatorDelay` (default: 0) - ms of inactivity before running customValidator, useful when you don't want to make ajax calls on every key press
 * `validatingMessage` (default: `"checking..."`) - shown during async validation operations
 * `isValid` (readonly) - current validation status
 * `formController` (should be set to `controller`) - This allows each component to register with the controller so that the controller can track the current status of each validation component
 
-The `customValidator` takes 2 arguments, the field value and a callback function. The callback expects 2 arguments success (bool) and status message. If the callback is not executed immediately then the component will show the `validatingMessage` until callback is invoked.
+The `customValidator` takes 2 arguments, the field value and a callback function. The callback expects 2 arguments success (bool) and status message and an optional 3rd argument (bool) which when set will force the message to be displayed immediatly (even if the field has focus). If the callback is not executed immediately then the component will show the `validatingMessage` until callback is invoked.
 
 ```javascript
 var validateEmail = function (email, callback) {

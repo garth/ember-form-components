@@ -16,6 +16,8 @@ EmberFormComponents.InputTextComponent = Ember.Component.extend(
   regexMessage: null,
 
   customValidator: null,
+  customValidatorDelay: 0,
+  customValidatorTimeout: null,
 
   validate: function (value, status) {
     // test the regex
@@ -38,7 +40,19 @@ EmberFormComponents.InputTextComponent = Ember.Component.extend(
         // run any custom validator
         var customValidator = this.get('customValidator');
         if (typeof customValidator === 'function') {
-          customValidator.apply(this.get('formController'), [value, status]);
+          var formController = this.get('formController');
+          // if delay is set, only run if no changes are made during the delay time
+          var delay = this.get('customValidatorDelay');
+          if (delay && delay > 0) {
+            clearTimeout(this.get('customValidatorTimeout'));
+            this.set('customValidatorTimeout', setTimeout(function () {
+              customValidator.apply(formController, [value, status]);
+            }, delay));
+          }
+          else {
+            // no delay, just run
+            customValidator.apply(formController, [value, status]);
+          }
         }
         else {
           // call the super validation

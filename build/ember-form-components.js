@@ -1,4 +1,4 @@
-/*! ember-form-components 2013-09-21 17:08:26 https://github.com/garth/ember-form-components */
+/*! ember-form-components 2013-09-21 17:59:45 https://github.com/garth/ember-form-components */
 EmberFormComponents = EmberFC = Ember.Namespace.create();
 
 EmberFormComponents.Focusable = Ember.Mixin.create({
@@ -37,7 +37,7 @@ EmberFormComponents.AsyncValidation = Ember.Mixin.create({
     if (this.get('validating')) {
       return this.get('validatingMessage');
     }
-    else if ((!this.get('focused') || this.get('isValid')) &&
+    else if ((!this.get('focused') || this.get('showErrorOnFocus') || this.get('forceShowError') || this.get('isValid')) &&
       (this.get('showFieldValidation') || this.get('formController.showFieldValidation'))) {
       return this.get('statusMessage');
     }
@@ -46,6 +46,8 @@ EmberFormComponents.AsyncValidation = Ember.Mixin.create({
     }
   }.property('isValid', 'showFieldValidation', 'formController.showFieldValidation', 'focused', 'validating'),
   showFieldValidation: false,
+  showErrorOnFocus: false,
+  forceShowError: false,
   formController: null,
   isValid: false,
   validating: false,
@@ -76,12 +78,13 @@ EmberFormComponents.AsyncValidation = Ember.Mixin.create({
     // Call the specific validation function, passing the
     // value to validate and a callback to which the function
     // must pass the result of the validation.
-    this.validate(value, function (isValid, message) {
+    this.validate(value, function (isValid, message, forceShowError) {
       // Make sure that the value hasn't changed since async validation
       if (value === self.get('value')) {
         self.set('statusMessage', message);
         self.set('isValid', isValid);
         self.set('validating', false);
+        self.set('forceShowError', !!forceShowError);
       }
     });
   }.observes('value'),
@@ -110,6 +113,8 @@ EmberFormComponents.InputTextComponent = Ember.Component.extend(
   regexMessage: null,
 
   customValidator: null,
+  customValidatorDelay: 0,
+  customValidatorTimeout: null,
 
   validate: function (value, status) {
     // test the regex
@@ -132,7 +137,19 @@ EmberFormComponents.InputTextComponent = Ember.Component.extend(
         // run any custom validator
         var customValidator = this.get('customValidator');
         if (typeof customValidator === 'function') {
-          customValidator.apply(this.get('formController'), [value, status]);
+          var formController = this.get('formController');
+          // if delay is set, only run if no changes are made during the delay time
+          var delay = this.get('customValidatorDelay');
+          if (delay && delay > 0) {
+            clearTimeout(this.get('customValidatorTimeout'));
+            this.set('customValidatorTimeout', setTimeout(function () {
+              customValidator.apply(formController, [value, status]);
+            }, delay));
+          }
+          else {
+            // no delay, just run
+            customValidator.apply(formController, [value, status]);
+          }
         }
         else {
           // call the super validation
