@@ -1,4 +1,4 @@
-/*! ember-form-components 2013-09-21 17:59:45 https://github.com/garth/ember-form-components */
+/*! ember-form-components 2013-09-22 12:34:00 https://github.com/garth/ember-form-components */
 EmberFormComponents = EmberFC = Ember.Namespace.create();
 
 EmberFormComponents.Focusable = Ember.Mixin.create({
@@ -34,7 +34,10 @@ EmberFormComponents.AsyncValidation = Ember.Mixin.create({
   classNameBindings: ['statusClass'],
   statusMessage: '',
   message: function () {
-    if (this.get('validating')) {
+    if (!this.get('showMessages')) {
+      return '';
+    }
+    else if (this.get('validating')) {
       return this.get('validatingMessage');
     }
     else if ((!this.get('focused') || this.get('showErrorOnFocus') || this.get('forceShowError') || this.get('isValid')) &&
@@ -49,6 +52,7 @@ EmberFormComponents.AsyncValidation = Ember.Mixin.create({
   showErrorOnFocus: false,
   forceShowError: false,
   formController: null,
+  showMessages: true,
   isValid: false,
   validating: false,
   validatingMessage: 'checking...',
@@ -422,8 +426,18 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 this["Ember"]["TEMPLATES"]["input_text"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashContexts, hashTypes, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, stack2, hashContexts, hashTypes, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
+function program1(depth0,data) {
+  
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n  <span class=\"help-block\">");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "message", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</span>\n");
+  return buffer;
+  }
 
   data.buffer.push("<label class=\"control-label\" ");
   hashContexts = {'for': depth0};
@@ -447,11 +461,12 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'viewName': ("inputField")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n<span class=\"help-block\">");
+  data.buffer.push("\n");
   hashTypes = {};
   hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "message", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</span>\n");
+  stack2 = helpers['if'].call(depth0, "message", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n");
   return buffer;
   
 });

@@ -31,7 +31,10 @@ EmberFormComponents.AsyncValidation = Ember.Mixin.create({
   classNameBindings: ['statusClass'],
   statusMessage: '',
   message: function () {
-    if (this.get('validating')) {
+    if (!this.get('showMessages')) {
+      return '';
+    }
+    else if (this.get('validating')) {
       return this.get('validatingMessage');
     }
     else if ((!this.get('focused') || this.get('showErrorOnFocus') || this.get('forceShowError') || this.get('isValid')) &&
@@ -46,6 +49,7 @@ EmberFormComponents.AsyncValidation = Ember.Mixin.create({
   showErrorOnFocus: false,
   forceShowError: false,
   formController: null,
+  showMessages: true,
   isValid: false,
   validating: false,
   validatingMessage: 'checking...',

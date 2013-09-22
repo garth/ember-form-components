@@ -62,6 +62,7 @@ properties:
 * `type` (default: `"text"`)
 * `placeholder` (default: `""`) - placeholder text for the <input>
 * `required` (default: `false`) - when true the user must enter something into the <input>
+* `showMessages` (default: `true`) - set to false to never show messages
 * `showErrorOnFocus` (defualt: `false`) - when true shows errors even whilst editing
 * `shouldEqual` - when set `value` must equal the given value (or property)
 * `shouldEqualMessage` - message to show when `shouldEqual` does not match `value`
