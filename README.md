@@ -3,6 +3,21 @@ Ember Form Components Library
 
 The libray contains a number of [EmberJS](http://emberjs.com) components that you can use in your ember application to simplify form creation and validation.
 
+Install
+-------
+
+### Bower
+
+```
+bower install --save ember-form-components
+```
+
+Then include `bower_components/ember-form-components/build/ember-form-components.js` or `bower_components/ember-form-components/build/ember-form-components.min.js` in your app.
+
+### Manual
+
+Copy `build/ember-form-components.js` and/or `build/ember-form-components.min.js` to your vendor js scripts folder and reference in your app.
+
 Usage
 -----
 
