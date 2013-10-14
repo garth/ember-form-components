@@ -1,0 +1,22 @@
+{
+  "name": "ember-form-components",
+  "version": "0.1.0",
+  "homepage": "https://github.com/garth/ember-form-components",
+  "authors": [
+    "Garth Williams <garth@wi.llia.ms>"
+  ],
+  "description": "Emberjs Form Components",
+  "main": "build/ember-form-components.js",
+  "keywords": [
+    "emberjs",
+    "components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
