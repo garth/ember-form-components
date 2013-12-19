@@ -1,4 +1,4 @@
-/*! ember-form-components 2013-12-15 09:50:39 https://github.com/garth/ember-form-components */
+/*! ember-form-components 2013-12-19 08:15:17 https://github.com/garth/ember-form-components */
 EmberFormComponents = EmberFC = Ember.Namespace.create();
 
 EmberFormComponents.Focusable = Ember.Mixin.create({
@@ -309,7 +309,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.partial || depth0.partial),stack1 ? stack1.call(depth0, "input_text", options) : helperMissing.call(depth0, "partial", "input_text", options))));
-  data.buffer.push("\r\n");
+  data.buffer.push("\n");
   return buffer;
   
 });
@@ -332,12 +332,12 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'customValidator': ("view.validatePassword")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers['input-text'] || depth0['input-text']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input-text", options))));
-  data.buffer.push("\r\n");
+  data.buffer.push("\n");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.partial || depth0.partial),stack1 ? stack1.call(depth0, "input_password_strength", options) : helperMissing.call(depth0, "partial", "input_password_strength", options))));
-  data.buffer.push("\r\n");
+  data.buffer.push("\n");
   hashContexts = {'type': depth0,'label': depth0,'placeholder': depth0,'formController': depth0,'shouldEqual': depth0,'shouldEqualMessage': depth0};
   hashTypes = {'type': "STRING",'label': "STRING",'placeholder': "STRING",'formController': "ID",'shouldEqual': "ID",'shouldEqualMessage': "STRING"};
   options = {hash:{
@@ -349,7 +349,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'shouldEqualMessage': ("Passwords do not match")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers['input-text'] || depth0['input-text']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input-text", options))));
-  data.buffer.push("\r\n");
+  data.buffer.push("\n");
   return buffer;
   
 });
@@ -364,7 +364,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.partial || depth0.partial),stack1 ? stack1.call(depth0, "input_text", options) : helperMissing.call(depth0, "partial", "input_text", options))));
-  data.buffer.push("\r\n");
+  data.buffer.push("\n");
   return buffer;
   
 });
@@ -386,7 +386,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "yield", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</button>\r\n");
+  data.buffer.push("</button>\n");
   return buffer;
   
 });
@@ -397,28 +397,28 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, hashContexts, hashTypes, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("<div class=\"progress password-meter\">\r\n  <div ");
+  data.buffer.push("<div class=\"progress password-meter\">\n  <div ");
   hashContexts = {'class': depth0};
   hashTypes = {'class': "STRING"};
   options = {hash:{
     'class': ("progressType")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
-  data.buffer.push(" role=\"progressbar\"\r\n    ");
+  data.buffer.push(" role=\"progressbar\"\n    ");
   hashContexts = {'aria-valuenow': depth0};
   hashTypes = {'aria-valuenow': "STRING"};
   options = {hash:{
     'aria-valuenow': ("score")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
-  data.buffer.push(" aria-valuemin=\"0\"\r\n    aria-valuemax=\"100\" ");
+  data.buffer.push(" aria-valuemin=\"0\"\n    aria-valuemax=\"100\" ");
   hashContexts = {'style': depth0};
   hashTypes = {'style': "STRING"};
   options = {hash:{
     'style': ("progressWidth")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
-  data.buffer.push("></div>\r\n</div>\r\n");
+  data.buffer.push("></div>\n</div>\n");
   return buffer;
   
 });
@@ -431,11 +431,11 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = '', hashTypes, hashContexts;
-  data.buffer.push("\r\n  <span class=\"help-block\">");
+  data.buffer.push("\n  <span class=\"help-block\">");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "message", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</span>\r\n");
+  data.buffer.push("</span>\n");
   return buffer;
   }
 
@@ -450,7 +450,7 @@ function program1(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "label", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</label>\r\n");
+  data.buffer.push("</label>\n");
   hashContexts = {'typeBinding': depth0,'class': depth0,'placeholderBinding': depth0,'valueBinding': depth0,'viewName': depth0};
   hashTypes = {'typeBinding': "STRING",'class': "STRING",'placeholderBinding': "STRING",'valueBinding': "STRING",'viewName': "STRING"};
   options = {hash:{
@@ -461,12 +461,12 @@ function program1(depth0,data) {
     'viewName': ("inputField")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\r\n");
+  data.buffer.push("\n");
   hashTypes = {};
   hashContexts = {};
   stack2 = helpers['if'].call(depth0, "message", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\r\n");
+  data.buffer.push("\n");
   return buffer;
   
 });
