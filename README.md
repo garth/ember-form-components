@@ -1,3 +1,8 @@
+No Longer Recommended
+=====================
+
+Ember Form Components demonstrates some interesting concepts, but ultimatly it is the wrong approach. Whilst components can (and should) be used for rendering fields with validation output, the logic for validation should not be bound to the UI. I'm leaving this repository here for reference purposes only.
+
 Ember Form Components Library
 =============================
 
